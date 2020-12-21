@@ -57,16 +57,19 @@ namespace Sierpinski_Triangle
             Random rand = new Random();
             using (Graphics gr = pictureBoxScreen.CreateGraphics())
             {
-
-                if(numericUpDownDotAmount.Value == 0)
+                Pen pen;
+                if (numericUpDownDotAmount.Value == 0)
                     for (int i = 1; i <= 1000; i++)
                     {
                     int j = rand.Next(0, 3);
                     LastPoint = new PointF(
                         (LastPoint.X + Corners[j].X) / 2,
                         (LastPoint.Y + Corners[j].Y) / 2);
-                    Pen pen = new Pen(Color.FromName(comboBoxColor.SelectedItem.ToString()), dotWidth);
-                    gr.DrawEllipse(pen, LastPoint.X, LastPoint.Y,
+                        if (!checkBoxRndColors.Checked)
+                            pen = new Pen(Color.FromName(comboBoxColor.SelectedItem.ToString()), dotWidth);
+                        else
+                            pen = new Pen(Color.FromArgb(rand.Next(0, 255), rand.Next(0, 255), rand.Next(0, 255)), dotWidth);
+                        gr.DrawEllipse(pen, LastPoint.X, LastPoint.Y,
                         dotWidth, dotWidth);
                     }
                 else
@@ -76,7 +79,10 @@ namespace Sierpinski_Triangle
                         LastPoint = new PointF(
                             (LastPoint.X + Corners[j].X) / 2,
                             (LastPoint.Y + Corners[j].Y) / 2);
-                        Pen pen = new Pen(Color.FromName(comboBoxColor.SelectedItem.ToString()), dotWidth);
+                        if (!checkBoxRndColors.Checked)
+                            pen = new Pen(Color.FromName(comboBoxColor.SelectedItem.ToString()), dotWidth);
+                        else
+                            pen = new Pen(Color.FromArgb(rand.Next(0, 255), rand.Next(0, 255), rand.Next(0, 255)), dotWidth);
                         gr.DrawEllipse(pen, LastPoint.X, LastPoint.Y,
                             dotWidth, dotWidth);
                     }

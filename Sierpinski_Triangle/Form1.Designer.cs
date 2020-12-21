@@ -30,6 +30,7 @@ namespace Sierpinski_Triangle
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pictureBoxScreen = new System.Windows.Forms.PictureBox();
             this.buttonDraw = new System.Windows.Forms.Button();
             this.numericUpDownDotWidth = new System.Windows.Forms.NumericUpDown();
@@ -46,6 +47,8 @@ namespace Sierpinski_Triangle
             this.labelDotAmount = new System.Windows.Forms.Label();
             this.numericUpDownDotAmount = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
+            this.checkBoxRndColors = new System.Windows.Forms.CheckBox();
+            this.labelSpeed = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxScreen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDotWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLine)).BeginInit();
@@ -68,12 +71,12 @@ namespace Sierpinski_Triangle
             // buttonDraw
             // 
             this.buttonDraw.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDraw.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonDraw.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonDraw.Location = new System.Drawing.Point(497, 12);
             this.buttonDraw.Name = "buttonDraw";
             this.buttonDraw.Size = new System.Drawing.Size(139, 35);
             this.buttonDraw.TabIndex = 1;
-            this.buttonDraw.Text = "Нарисовать";
+            this.buttonDraw.Text = "НАРИСОВАТЬ";
             this.buttonDraw.UseVisualStyleBackColor = true;
             this.buttonDraw.Click += new System.EventHandler(this.buttonDraw_Click);
             // 
@@ -125,8 +128,8 @@ namespace Sierpinski_Triangle
             // buttonStop
             // 
             this.buttonStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonStop.Location = new System.Drawing.Point(642, 12);
+            this.buttonStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonStop.Location = new System.Drawing.Point(566, 53);
             this.buttonStop.Name = "buttonStop";
             this.buttonStop.Size = new System.Drawing.Size(139, 35);
             this.buttonStop.TabIndex = 4;
@@ -137,8 +140,8 @@ namespace Sierpinski_Triangle
             // buttonClean
             // 
             this.buttonClean.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonClean.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonClean.Location = new System.Drawing.Point(575, 53);
+            this.buttonClean.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonClean.Location = new System.Drawing.Point(642, 12);
             this.buttonClean.Name = "buttonClean";
             this.buttonClean.Size = new System.Drawing.Size(139, 35);
             this.buttonClean.TabIndex = 5;
@@ -265,11 +268,35 @@ namespace Sierpinski_Triangle
             this.label2.TabIndex = 14;
             this.label2.Text = "* 0 - бесконечный цикл.";
             // 
+            // checkBoxRndColors
+            // 
+            this.checkBoxRndColors.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxRndColors.AutoSize = true;
+            this.checkBoxRndColors.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxRndColors.Location = new System.Drawing.Point(588, 198);
+            this.checkBoxRndColors.Name = "checkBoxRndColors";
+            this.checkBoxRndColors.Size = new System.Drawing.Size(117, 17);
+            this.checkBoxRndColors.TabIndex = 15;
+            this.checkBoxRndColors.Text = "Рандомные цвета";
+            this.checkBoxRndColors.UseVisualStyleBackColor = true;
+            // 
+            // labelSpeed
+            // 
+            this.labelSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelSpeed.AutoSize = true;
+            this.labelSpeed.Location = new System.Drawing.Point(639, 182);
+            this.labelSpeed.Name = "labelSpeed";
+            this.labelSpeed.Size = new System.Drawing.Size(112, 13);
+            this.labelSpeed.TabIndex = 16;
+            this.labelSpeed.Text = "** 1 - максимальная ";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 511);
+            this.Controls.Add(this.labelSpeed);
+            this.Controls.Add(this.checkBoxRndColors);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.labelDotAmount);
             this.Controls.Add(this.numericUpDownDotAmount);
@@ -285,6 +312,7 @@ namespace Sierpinski_Triangle
             this.Controls.Add(this.numericUpDownDotWidth);
             this.Controls.Add(this.buttonDraw);
             this.Controls.Add(this.pictureBoxScreen);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(800, 550);
             this.Name = "Form1";
             this.Text = "Треугольник Овсеюкова";
@@ -318,6 +346,8 @@ namespace Sierpinski_Triangle
         private System.Windows.Forms.Label labelDotAmount;
         private System.Windows.Forms.NumericUpDown numericUpDownDotAmount;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox checkBoxRndColors;
+        private System.Windows.Forms.Label labelSpeed;
     }
 }
 
