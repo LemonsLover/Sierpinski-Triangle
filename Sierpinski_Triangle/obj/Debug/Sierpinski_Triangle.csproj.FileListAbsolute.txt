@@ -1,0 +1,10 @@
+C:\Users\dizon\source\repos\Sierpinski_Triangle\Sierpinski_Triangle\bin\Debug\Sierpinski_Triangle.exe.config
+C:\Users\dizon\source\repos\Sierpinski_Triangle\Sierpinski_Triangle\bin\Debug\Sierpinski_Triangle.exe
+C:\Users\dizon\source\repos\Sierpinski_Triangle\Sierpinski_Triangle\bin\Debug\Sierpinski_Triangle.pdb
+C:\Users\dizon\source\repos\Sierpinski_Triangle\Sierpinski_Triangle\obj\Debug\Sierpinski_Triangle.csprojAssemblyReference.cache
+C:\Users\dizon\source\repos\Sierpinski_Triangle\Sierpinski_Triangle\obj\Debug\Sierpinski_Triangle.Form1.resources
+C:\Users\dizon\source\repos\Sierpinski_Triangle\Sierpinski_Triangle\obj\Debug\Sierpinski_Triangle.Properties.Resources.resources
+C:\Users\dizon\source\repos\Sierpinski_Triangle\Sierpinski_Triangle\obj\Debug\Sierpinski_Triangle.csproj.GenerateResource.cache
+C:\Users\dizon\source\repos\Sierpinski_Triangle\Sierpinski_Triangle\obj\Debug\Sierpinski_Triangle.csproj.CoreCompileInputs.cache
+C:\Users\dizon\source\repos\Sierpinski_Triangle\Sierpinski_Triangle\obj\Debug\Sierpinski_Triangle.exe
+C:\Users\dizon\source\repos\Sierpinski_Triangle\Sierpinski_Triangle\obj\Debug\Sierpinski_Triangle.pdb
