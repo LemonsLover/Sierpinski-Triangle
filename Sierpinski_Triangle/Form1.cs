@@ -27,7 +27,10 @@ namespace Sierpinski_Triangle
 
         private void buttonDraw_Click(object sender, EventArgs e)
         {
-            timerDraw.Enabled = true;
+            if (numericUpDownDotAmount.Value == 0)
+                timerDraw.Enabled = true;
+            else
+                timerDraw_Tick(sender, e);
             dotWidth = Convert.ToInt64(numericUpDownDotWidth.Value);
         }
 
@@ -55,8 +58,9 @@ namespace Sierpinski_Triangle
             using (Graphics gr = pictureBoxScreen.CreateGraphics())
             {
 
-                for (int i = 1; i <= 1000; i++)
-                {
+                if(numericUpDownDotAmount.Value == 0)
+                    for (int i = 1; i <= 1000; i++)
+                    {
                     int j = rand.Next(0, 3);
                     LastPoint = new PointF(
                         (LastPoint.X + Corners[j].X) / 2,
@@ -64,7 +68,18 @@ namespace Sierpinski_Triangle
                     Pen pen = new Pen(Color.FromName(comboBoxColor.SelectedItem.ToString()), dotWidth);
                     gr.DrawEllipse(pen, LastPoint.X, LastPoint.Y,
                         dotWidth, dotWidth);
-                }
+                    }
+                else
+                    for (int i = 1; i <= numericUpDownDotAmount.Value; i++)
+                    {
+                        int j = rand.Next(0, 3);
+                        LastPoint = new PointF(
+                            (LastPoint.X + Corners[j].X) / 2,
+                            (LastPoint.Y + Corners[j].Y) / 2);
+                        Pen pen = new Pen(Color.FromName(comboBoxColor.SelectedItem.ToString()), dotWidth);
+                        gr.DrawEllipse(pen, LastPoint.X, LastPoint.Y,
+                            dotWidth, dotWidth);
+                    }
             }
         }
 
@@ -73,10 +88,10 @@ namespace Sierpinski_Triangle
             timerDraw.Enabled = false;
             DefineCorners();
 
-            using (Graphics gr = pictureBoxScreen.CreateGraphics())
-            {
-                gr.Clear(this.BackColor);
-            }
+            //using (Graphics gr = pictureBoxScreen.CreateGraphics())
+            //{
+            //    gr.Clear(this.BackColor);
+            //}
         }
 
         private void buttonStop_Click(object sender, EventArgs e)
