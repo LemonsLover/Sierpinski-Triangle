@@ -11,11 +11,13 @@ using System.Windows.Forms;
 
 namespace Sierpinski_Triangle
 {
-    public partial class Form1 : Form
+    public partial class mainScreen : Form
     {
         public float dotWidth;
+        public double dotAmount = 0;
+        public int dotATick;
 
-        public Form1()
+        public mainScreen()
         {
             InitializeComponent();
         }
@@ -27,39 +29,58 @@ namespace Sierpinski_Triangle
 
         private void buttonDraw_Click(object sender, EventArgs e)
         {
+            DefineCorners();
             if (numericUpDownDotAmount.Value == 0)
                 timerDraw.Enabled = true;
             else
                 timerDraw_Tick(sender, e);
             dotWidth = Convert.ToInt64(numericUpDownDotWidth.Value);
+            Pen pen = new Pen(Color.Brown, dotWidth);
+            using (Graphics gr = pictureBoxScreen.CreateGraphics())
+            {
+                gr.DrawEllipse(pen, LastPoint.X, LastPoint.Y, dotWidth, dotWidth);
+            }
         }
 
         private void DefineCorners()
         {
+            Random rand = new Random();
             Corners = new List<PointF>();
             Corners.Add(new PointF(pictureBoxScreen.Width / 2, 10));
             Corners.Add(new PointF(10, pictureBoxScreen.Height - 10));
             Corners.Add(new PointF(pictureBoxScreen.Width - 10, pictureBoxScreen.ClientSize.Height - 10));
 
-
-            LastPoint = Corners[0];
+            if (!checkBoxRndFirstDot.Checked)
+                LastPoint = Corners[0];
+            else if(checkBoxRndFirstDot.Checked)
+                LastPoint = new PointF(rand.Next(0, pictureBoxScreen.Width/2), rand.Next(0, pictureBoxScreen.Height/2));
         }
+        
 
         private void Form1_Load(object sender, EventArgs e)
         {
             DefineCorners();
             numericUpDownDotSpeed_ValueChanged(sender, e);
             comboBoxColor.SelectedIndex = 0;
+            dotAmount = 0;
+            if (checkBoxOneATick.Checked)
+                dotATick = 1;
+            else
+                dotATick = 1000;
         }
 
         private void timerDraw_Tick(object sender, EventArgs e)
         {
+            if (checkBoxOneATick.Checked)
+                dotATick = 1;
+            else
+                dotATick = 1000;
             Random rand = new Random();
             using (Graphics gr = pictureBoxScreen.CreateGraphics())
             {
                 Pen pen;
                 if (numericUpDownDotAmount.Value == 0)
-                    for (int i = 1; i <= 1000; i++)
+                    for (int i = 1; i <= dotATick; i++)
                     {
                     int j = rand.Next(0, 3);
                     LastPoint = new PointF(
@@ -71,6 +92,8 @@ namespace Sierpinski_Triangle
                             pen = new Pen(Color.FromArgb(rand.Next(0, 255), rand.Next(0, 255), rand.Next(0, 255)), dotWidth);
                         gr.DrawEllipse(pen, LastPoint.X, LastPoint.Y,
                         dotWidth, dotWidth);
+                        dotAmount ++;
+                        this.Text = $"Треугольник Серпинского(Точек на экране: {dotAmount})";
                     }
                 else
                     for (int i = 1; i <= numericUpDownDotAmount.Value; i++)
@@ -85,6 +108,8 @@ namespace Sierpinski_Triangle
                             pen = new Pen(Color.FromArgb(rand.Next(0, 255), rand.Next(0, 255), rand.Next(0, 255)), dotWidth);
                         gr.DrawEllipse(pen, LastPoint.X, LastPoint.Y,
                             dotWidth, dotWidth);
+                        dotAmount++;
+                        this.Text = $"Треугольник Серпинского(Точек на экране: {dotAmount})";
                     }
             }
         }
@@ -112,6 +137,8 @@ namespace Sierpinski_Triangle
                 gr.Clear(this.BackColor);
             }
             timerDraw.Enabled = false;
+            dotAmount = 0;
+            this.Text = $"Треугольник Серпинского(Точек на экране: {dotAmount})";
         }
 
         private void numericUpDownDotSpeed_ValueChanged(object sender, EventArgs e)
